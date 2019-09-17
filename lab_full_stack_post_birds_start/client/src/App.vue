@@ -25,8 +25,14 @@ export default {
   mounted(){
     this.fetchData();
     eventBus.$on('sighting-added', (sighting) => {
-      this.sightings.push(sighting)
+      this.sightings.push(sighting);
     })
+
+    eventBus.$on('sighting-deleted', id => {
+      const index = this.sightings.indexOf(sighting => sighting._id === id);
+      this.sightings.splice(index, 1);
+    })
+
   },
   methods: {
     fetchData(){
@@ -38,16 +44,16 @@ export default {
 </script>
 
 <style>
-html {
-  height: 100%;
-}
+  html {
+    height: 100%;
+  }
 
-body {
-  background: url('./assets/birds-background.jpg') no-repeat;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  body {
+    background: url('./assets/birds-background.jpg') no-repeat;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
-}
+  }
 </style>
