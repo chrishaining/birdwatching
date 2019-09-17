@@ -40,6 +40,8 @@ export default {
 				location: this.location,
 				date: this.date
 			}
+			SightingService.postSighting(sighting)
+			.then(res => eventBus.$emit('sighting-added', res))
 		}
 	}
 }

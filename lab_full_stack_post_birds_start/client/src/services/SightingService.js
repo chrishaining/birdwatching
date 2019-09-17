@@ -13,7 +13,7 @@ export default {
       body: JSON.stringify(payload),
       headers: { 'Content-Type': 'application/json'}
     })
-    .then(result.json()) // can we call this result, or does it need to be res?
+    .then(res => res.json())
   }
 
 
